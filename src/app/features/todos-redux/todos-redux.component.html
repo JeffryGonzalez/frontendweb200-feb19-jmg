@@ -1,4 +1,12 @@
 <header>
   <h5>Todo Redux Style</h5>
-  <h6>{{ message$ | async }}</h6>
+  <h6 (click)="doneClicked()">{{ message$ | async }}</h6>
 </header>
+<section class="row">
+  <div class="col">
+    <app-entry></app-entry>
+  </div>
+  <div class="col">
+    <app-list [list]="todos$ | async"></app-list>
+  </div>
+</section>
