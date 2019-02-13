@@ -1,5 +1,6 @@
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
-import { Action } from '@ngrx/store';
+// import { Action } from '@ngrx/store';
+import * as actions from '../actions/todos.actions';
 export interface TodoEntity {
   id: string;
   description: string;
@@ -17,8 +18,11 @@ const initialState: State = {
 
 export const adapter = createEntityAdapter<TodoEntity>();
 
-export function reducer(state: State = initialState, action: Action): State {
+export function reducer(state: State = initialState, action: actions.All): State {
   switch (action.type) {
+    case actions.ADD_TODO: {
+      return adapter.addOne(action.payload, state);
+    }
     default: {
       return state;
     }
